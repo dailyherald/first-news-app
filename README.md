@@ -23,3 +23,8 @@ git status
 - pull grabs from git
 - origin is the repo
 - master is the new git branch (in this case, first-news-app at git)
+
+How to set aliases for commands
+git config --global alias.st status
+
+git config --global alias.po push origin
