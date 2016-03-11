@@ -11,8 +11,33 @@
 
 <body>
 
-<h1>Deaths during the L.A. riots</h1>
-<p>This is the first news app</p>
+	<h1>Deaths during the L.A. riots</h1>
 
+	<!-- This gives all of the stuff {{ object_list }} -->
+
+
+    <table border=1 cellpadding=7>
+        <tr>
+            <th>Name</th>
+            <th>age</th>
+            <th>gender</th>
+            <th>race</th>
+            <th>date</th>
+        </tr>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.full_name }}</td>
+            <td>{{ obj.age }}</td>
+            <td>{{ obj.gender }}</td>
+            <td>{{ obj.race }}</td>
+            <td>{{ obj.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+<!--
+id,first_name,last_name,full_name,disposition,age,gender,race,date,address,neighborhood,type,x,y,story,url
+
+-->
 </body>
 </html>

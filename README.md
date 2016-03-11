@@ -58,10 +58,14 @@ git config --global alias.st status
 
 git config --global alias.po push origin
 
-
 =================
 
 .gitignore will list the files to ignore
 
 stuff/*.* - for instance ignores everything in the directory stuff, even if you commit everything .
+
+=================
+
+When you make a new directory, commit it first before you add anything to it
+
 
