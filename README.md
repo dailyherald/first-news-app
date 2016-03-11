@@ -1,7 +1,8 @@
 My first news app
 =================
 
-Activate a virtual env and then create a new Git repository: 
+Activate a virtual env and then create a new Git repository
+
 $ git init repo
 
 =================
