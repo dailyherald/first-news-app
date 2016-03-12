@@ -23,7 +23,7 @@
         <header>
             <h1>These are the 60 people who died during the L.A. riots</h1>
             <div class="byline">
-                By <a href="http://first-news-app.readthedocs.org/">The First News App Tutorial</a>
+                By <a href="http://first-news-app.readthedocs.org/">First News App Tutorial</a>
             </div>
         </header>
 
@@ -1448,13 +1448,14 @@ id,first_name,last_name,full_name,disposition,age,gender,race,date,address,neigh
                 
               ]
             };
-            
+          
             var blackIcon = L.Icon.extend({
                 options: {
                     iconUrl: "/static/marker-24.png",
                     iconSize: [24, 24]
                 }
             });
+// if not loop.last makes sure no comma at last feature
 
            var dataLayer = L.geoJson(data, {
                 pointToLayer: function (feature, latlng) {
