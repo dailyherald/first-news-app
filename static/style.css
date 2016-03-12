@@ -53,6 +53,7 @@ tr:hover {
     background-color: #f3f3f3;
 }
 p {
+    margin: 25px 10px 15px 10px;
     line-height:140%;
 }
 a {
@@ -64,12 +65,14 @@ a:hover {
 }
 
 @media (max-width: 979px) {
+    /* reveals columns of the table */
     tr th:nth-of-type(n+3),
     tr td:nth-of-type(n+3) {
         display:none;
     }
 }
 @media (max-width: 420px) {
+    /* hides columns of the table */
     tr th:nth-of-type(n+2),
     tr td:nth-of-type(n+2) {
         display:none;

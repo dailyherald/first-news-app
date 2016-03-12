@@ -1,16 +1,27 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     </head>
     <body>
-        <h3>{{ object.full_name }}</h3>
-        <div id="map" style="width:100%; height:300px;"></div>
+        <nav>
+            <a href="http://first-news-app.readthedocs.org/">
+                <img src="{{ url_for('static', filename='irelogo.png') }}">
+            </a>
+        </nav>
+        <header>
+            <h1>{{ object.full_name }}</h1>
+        </header>
+
+         <div id="map" style="width:100%; height:300px;"></div>
          <p>
             {{ object.last_name }}, a {{ object.age }} year old,
-            {{ object.race }} {{ object.gender|lower }} died on {{ object.date }}
-            in a {{ object.type|lower }} at {{ object.address }} in {{ object.neighborhood }}.
+            {{ object.race|lower }} {{ object.gender|lower }} died on {{ object.date }}
+            in a {{ object.type|lower }} at {{ object.address }} in {{ object.neighborhood }}. <a href="../">Return to list.</a>
         </p>
 
         <script type="text/javascript">
@@ -21,7 +32,13 @@
                 subdomains: ['otile1','otile2','otile3','otile4']
             });
             map.addLayer(mapquestLayer);
-            var marker = L.marker([{{ object.y }}, {{ object.x }}]).addTo(map);
+            var blackIcon = L.Icon.extend({
+                options: {
+                    iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
+                    iconSize: [24, 24]
+                }
+            });
+            var marker = L.marker([{{ object.y }}, {{ object.x }}], {icon: new blackIcon()}).addTo(map);
         </script>
 
     </body>
