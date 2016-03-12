@@ -1,0 +1,1474 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    First news app - L.A. riots
+  </title>
+
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+</head>
+
+<body>
+        <nav>
+            <a href="http://first-news-app.readthedocs.org/">
+                <img src="/static/irelogo.png">
+            </a>
+        </nav>
+        <header>
+            <h1>These are the 60 people who died during the L.A. riots</h1>
+            <div class="byline">
+                By <a href="http://first-news-app.readthedocs.org/">The First News App Tutorial</a>
+            </div>
+        </header>
+
+	<!-- This gives all of the stuff [{&#39;first_name&#39;: &#39;Cesar A.&#39;, &#39;last_name&#39;: &#39;Aguilar&#39;, &#39;neighborhood&#39;: &#39;Westlake&#39;, &#39;full_name&#39;: &#39;Cesar A. Aguilar&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1558_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;18&#39;, &#39;story&#39;: &#39;Cesar Aguilar, an 18-year-old Latino, was shot and killed Thursday, April 30, 1992, in Westlake. Aguilar, a Honduran immigrant, was arrested with more than 40 other alleged looters near Sam\&#39;s Corner Liquor Store at 6th Street and Westlake Avenue. Officers say he was ordered to lie prone, and that he then pulled what appeared to be a gun from his waistband and pointed it toward them. Officers fired at Aguilar with a 9-millimeter pistol and a shotgun. He was struck in the chest and died at the scene, according to an initial coroner\&#39;s account. The &#34;gun,&#34; however, was a plastic toy with a black barrel and brown grips, officials said. Aguilar had lived for five months in the Park View Luxury Apartments, a $450-a-month hotel at MacArthur Park. Friends said he delivered newspapers for a living. A father of two, Aguilar had planned to return to Honduras to be reunited with his pregnant girlfriend. Aguilar\&#39;s body was flown back to Honduras at that government\&#39;s expense because Aguilar\&#39;s family could not pay the $1,976, Consul General Rene Francisco Umana said. &#34;It\&#39;s so sad,&#34; Umana said. &#34;Maybe he didn\&#39;t have an idea to hurt anybody . . . but the situation was so difficult, so grave. In L.A., things can happen.&#34;&#39;, &#39;y&#39;: &#39;34.0592814&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;2009 W. 6th St.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2739756&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;1&#39;}, {&#39;first_name&#39;: &#39;George&#39;, &#39;last_name&#39;: &#39;Alvarez&#39;, &#39;neighborhood&#39;: &#39;Chinatown&#39;, &#39;full_name&#39;: &#39;George Alvarez&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;42&#39;, &#39;story&#39;: &#39;George Alvarez, a 42-year-old Latino, died Friday, May 1, 1992, in Chinatown. Alvarez was beaten to death by some homeless people after he allegedly stole less than $5 worth of recyclable cans and bottles. His body was found in front of a recycling center, near Main and College streets.&#39;, &#39;y&#39;: &#39;34.0626901&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Main &amp; College streets&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.2340982&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;2&#39;}, {&#39;first_name&#39;: &#39;Wilson&#39;, &#39;last_name&#39;: &#39;Alvarez&#39;, &#39;neighborhood&#39;: &#39;Hawthorne&#39;, &#39;full_name&#39;: &#39;Wilson Alvarez&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;40&#39;, &#39;story&#39;: &#39;Wilson Alvarez, a 40-year-old Latino, died of head injuries at County-USC Medical Center on May 23, 1992. According to authorities, Alvarez was assaulted while throwing rocks at looters Friday, May 1.&#39;, &#39;y&#39;: &#39;33.901662&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;3100 Rosecrans Ave.&#39;, &#39;date&#39;: &#39;1992-05-23&#39;, &#39;x&#39;: &#39;-118.326816&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;3&#39;}, {&#39;first_name&#39;: &#39;Brian E.&#39;, &#39;last_name&#39;: &#39;Andrew&#39;, &#39;neighborhood&#39;: &#39;Compton&#39;, &#39;full_name&#39;: &#39;Brian E. Andrew&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;30&#39;, &#39;story&#39;: &#39;Brian E. Andrew, a 30-year-old black man, was shot and killed Thursday, April 30, 1992, near Rosecrans and Chester avenues in Compton. Andrew, who worked odd jobs in construction, went out Thursday night and never returned. After trying in vain to locate her son, Gloria Andrew filed a missing-persons report six days later. The next day, a Compton police officer knocked on her door to tell her the news. Andrew was seen running from a nearby shoe store with other looters, police said, and was carrying boxes of shoes and a large bottle of beer. Andrew had dropped the shoes and was waving the bottle when a Compton police officer caught up with him in an alley and shot him once in the face as they grappled, police said. Andrew, the father of two 14-year-old girls, had had minor run-ins with police, his mother said, and once served six months in the California Youth Authority on an assault conviction. But she said it was &#34;inconceivable&#34; that he would strike an armed officer. &#34;He wasn\&#39;t that type of person.&#34;&#39;, &#39;y&#39;: &#39;33.9034569&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Rosecrans &amp; Chester avenues&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2153903&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;4&#39;}, {&#39;first_name&#39;: &#39;Vivian&#39;, &#39;last_name&#39;: &#39;Austin&#39;, &#39;neighborhood&#39;: &#39;Harvard Park&#39;, &#39;full_name&#39;: &#39;Vivian Austin&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Female&#39;, &#39;age&#39;: &#39;87&#39;, &#39;story&#39;: &#39;Vivian Austin, an 87-year-old black woman, died Sunday, May 3, 1992, in the 1600 block of West 60th Street. Austin suffered a fatal heart attack at her home in Harvard Park. Friends said she had been distraught by the rioting. &#34;This is considered a riot case because the stress from the riot was well documented and is a contributing factor in death from arteriosclerotic disease,&#34; the coroner\&#39;s report says.&#39;, &#39;y&#39;: &#39;33.985667&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;1600 W. 60th St.&#39;, &#39;date&#39;: &#39;1992-05-03&#39;, &#39;x&#39;: &#39;-118.304741&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;5&#39;}, {&#39;first_name&#39;: &#39;Franklin&#39;, &#39;last_name&#39;: &#39;Benavidez&#39;, &#39;neighborhood&#39;: &#39;Vermont Square&#39;, &#39;full_name&#39;: &#39;Franklin Benavidez&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;27&#39;, &#39;story&#39;: &#39;Franklin Benavidez, a 27-year-old Latino, was shot and killed Thursday, April 30, 1992, in the 4400 block of South Western Avenue in Vermont Square. According to authorities, Benavidez was shot after fleeing from a gas station he had tried to rob at Western and Vernon avenues. Benavidez pointed a shotgun at officers after being ordered to drop it, they said. Two LAPD Metro Division officers fired 10 rounds, investigators said. A second suspect, Victor Munoz, 19, was struck in the stomach, police said, after he appeared to arm himself with a handgun. Munoz, who was hospitalized for two weeks, was not arrested. Investigators later determined that Munoz was carrying a beer can. Munoz said Benavidez did not have a gun and did not try to rob the gas station. J.C. Wilburn, who operates the Shell station, said two Latino men -- one with a shotgun -- tried to rob his business moments before the shooting, but left when he and two co-workers displayed guns of their own. Almost immediately after the would-be robbers turned the corner, Wilburn said, gunfire rang out. Benavidez, who moved to the United States in 1985, was born in El Salvador and had served in the Salvadoran Army. In Los Angeles, he repaired cars and delivered telephone books.&#39;, &#39;y&#39;: &#39;34.0034731&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;4404 S. Western Ave.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3088215&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;6&#39;}, {&#39;first_name&#39;: &#39;Carol&#39;, &#39;last_name&#39;: &#39;Benson&#39;, &#39;neighborhood&#39;: &#39;South Park&#39;, &#39;full_name&#39;: &#39;Carol Benson&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Female&#39;, &#39;age&#39;: &#39;42&#39;, &#39;story&#39;: &#39;Carol Benson, a 42-year-old black woman, was struck on the 110 Freeway near Slauson Avenue in a hit-and-run accident on Saturday, May 2, 1992. Little is known about Benson, who was struck and dragged 180 feet. Authorities say she lived by herself in an apartment across from a small church in South Los Angeles. No relatives claimed her body, so her funeral was like those offered for all indigents: a cremation at County-USC Medical Center.&#39;, &#39;y&#39;: &#39;33.98916756&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Harbor Freeway near Slauson Avenue&#39;, &#39;date&#39;: &#39;1992-05-02&#39;, &#39;x&#39;: &#39;-118.2805037&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;7&#39;}, {&#39;first_name&#39;: &#39;Patrick&#39;, &#39;last_name&#39;: &#39;Bettan&#39;, &#39;neighborhood&#39;: &#39;Koreatown&#39;, &#39;full_name&#39;: &#39;Patrick Bettan&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1558_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;30&#39;, &#39;story&#39;: &#39;Patrick Bettan, a 30-year-old white man, was shot and killed Thursday, April 30, 1992, in Koreatown. Bettan, a security guard at a Koreatown mini-mall in the 2700 block of West Olympic Boulevard, was accidentally shot by a co-worker during a looting incident.&#39;, &#39;y&#39;: &#39;34.052068&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;2740 W. Olympic Blvd.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.293181&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;8&#39;}, {&#39;first_name&#39;: &#39;Hector&#39;, &#39;last_name&#39;: &#39;Castro&#39;, &#39;neighborhood&#39;: &#39;Koreatown&#39;, &#39;full_name&#39;: &#39;Hector Castro&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;49&#39;, &#39;story&#39;: &#39;Hector Castro, a 49-year-old Latino, was shot and killed Thursday, April 30, 1992, in Koreatown. Castro was shot outside a block of retail shops at Vermont and Leeward avenues by an unknown gunman during a looting melee. The fatal bullet passed through the Central American immigrant\&#39;s neck and was never found, authorities said. &#34;There were 150 to 300 people out there,&#34; said LAPD Det. Steven Sena. &#34;Not only were there Korean merchants shooting their weapons to scare off looters, but possible gang members and looters were shooting at the Koreans to get them out of the stores.&#34; &#34;It makes the case almost impossible&#34; to solve, Sena said.&#39;, &#39;y&#39;: &#39;34.0587022&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Vermont &amp; Leeward avenues&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.291654&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;9&#39;}, {&#39;first_name&#39;: &#39;Jerel L.&#39;, &#39;last_name&#39;: &#39;Channell&#39;, &#39;neighborhood&#39;: &#39;Hollywood&#39;, &#39;full_name&#39;: &#39;Jerel L. Channell&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;26&#39;, &#39;story&#39;: &#39;Darnell R. Mallory, an 18-year-old black man, Jerel L. Channell, a 26-year-old black man, and Juanita Pettaway, a 37-year-old black woman, were killed in an auto accident Thursday, April 30, 1992, in Hollywood. The trio fled after Beverly Hills police officers noticed a defective taillight on their car and tried to stop them. After a high-speed chase down side streets, their car jumped a curb and crashed into a wall at Santa Monica Boulevard and Seward Street. An investigation showed that the three had robbed a man of his wallet in West Los Angeles. &#34;We have no reason to believe this was anything more than a common street robbery,&#34; said police. &#34;This is considered a riot case because of the riot-related robbery,&#34; the coroner\&#39;s report says.&#39;, &#39;y&#39;: &#39;34.09129756&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Santa Monica Boulevard &amp; Seward Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3323783&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;10&#39;}, {&#39;first_name&#39;: &#39;Gregory&#39;, &#39;last_name&#39;: &#39;Davis Jr.&#39;, &#39;neighborhood&#39;: &#39;Vermont Square&#39;, &#39;full_name&#39;: &#39;Gregory Davis Jr.&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1558_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;15&#39;, &#39;story&#39;: &#39;Gregory Davis Jr., a 15-year-old black teen, was fatally shot Wednesday, April 29, 1992, near the intersection of Vermont Avenue and 43rd Street in Vermont Square. He was transported by friends to County-USC Medical Center, where he died.&#39;, &#39;y&#39;: &#39;34.005485&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Vermont Avenue &amp; 43rd Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2915492&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;11&#39;}, {&#39;first_name&#39;: &#39;John&#39;, &#39;last_name&#39;: &#39;Doe #80&#39;, &#39;neighborhood&#39;: &#39;Vermont-Slauson&#39;, &#39;full_name&#39;: &#39;John Doe #80&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-09-10/news/mn-326_1_unidentified-bodies&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;&#39;, &#39;story&#39;: &#34;John Doe #80 was found Saturday, May 2, 1992, in a burned-out Pep Boys auto parts store in the 5800 block of South Vermont Avenue. The store in Vermont-Slauson had been torched a few days earlier. Investigators succeeded in lifting a single print from the body&#39;s left middle finger -- a critical piece of information in the identification process. In addition, they X-rayed the body&#39;s teeth and recovered from the scene a pair of blue bikini underwear, a .38-caliber bullet casing and parts of a pair of blue jeans.&#34;, &#39;y&#39;: &#39;33.98939885&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;5800 block of South Vermont Avenue&#39;, &#39;date&#39;: &#39;1992-05-02&#39;, &#39;x&#39;: &#39;-118.2914954&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;12&#39;}, {&#39;first_name&#39;: &#39;Harry&#39;, &#39;last_name&#39;: &#39;Doller&#39;, &#39;neighborhood&#39;: &#39;Silver Lake&#39;, &#39;full_name&#39;: &#39;Harry Doller&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;56&#39;, &#39;story&#39;: &#39;Harry Doller, a 56-year-old white man, died Friday, May 1, 1992, in Silver Lake. Doller, who lived alone in a cottage in the 3500 block Winslow Drive, &#34;fell asleep with a cigarette and his bed caught fire,&#34; said Det. Andrew Cicoria. The coroner\&#39;s office concluded that he died of a drug and alcohol overdose and that his cigarette may have started the fire.&#39;, &#39;y&#39;: &#39;34.08778849&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;3500 block of Winslow Drive&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.278763&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;13&#39;}, {&#39;first_name&#39;: &#39;Kevin J.&#39;, &#39;last_name&#39;: &#39;Edwards&#39;, &#39;neighborhood&#39;: &#39;Compton&#39;, &#39;full_name&#39;: &#39;Kevin J. Edwards&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;35&#39;, &#39;story&#39;: &#39;Kevin Edwards, a 35-year-old black man, was shot and killed Thursday, April 30, 1992, in the 600 block of South Locust Avenue in Compton. Edwards was shot after an apparent argument with a friend at a home far from the scene of any disturbances. &#34;It may have been a domestic dispute,&#34; said Det. John Swanson.&#39;, &#39;y&#39;: &#39;33.892421&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;614 S. Locust Ave.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2002522&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;14&#39;}, {&#39;first_name&#39;: &#39;Howard&#39;, &#39;last_name&#39;: &#39;Epstein&#39;, &#39;neighborhood&#39;: &#39;Hyde Park&#39;, &#39;full_name&#39;: &#39;Howard Epstein&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1558_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;45&#39;, &#39;story&#39;: &#34;Howard Epstein, a 45-year-old white man, was shot and killed Thursday, April 30, 1992, near Slauson and 7th avenues in Hyde Park. Epstein, who had flown from his Northern California home to check on his South Los Angeles metal manufacturing business, was struck in the head by a bullet that apparently came from a pickup truck that had pulled alongside his car. His car careened into a liquor store parking lot, where a crowd quickly gathered. Onlookers broke into applause when someone yelled that the dead driver was white, witnesses said, and Epstein&#39;s cellular telephone, camera, briefcase and pistol were stolen. Hostility was so intense after the shooting of Epstein that detectives towed away the Epstein&#39;s Thunderbird while his body was still behind the wheel -- an unusual step.&#34;, &#39;y&#39;: &#39;33.9890486&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Slauson &amp; 7th avenues&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3247424&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;15&#39;}, {&#39;first_name&#39;: &#39;Juana&#39;, &#39;last_name&#39;: &#39;Espinosa&#39;, &#39;neighborhood&#39;: &#39;Compton&#39;, &#39;full_name&#39;: &#39;Juana Espinosa&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Female&#39;, &#39;age&#39;: &#39;65&#39;, &#39;story&#39;: &#39;Juana Espinosa, a 65-year-old Latina, was shot and killed Saturday, May 2, 1992, in the 7600 block of South Compton Avenue in Willowbrook. Espinosa was shot in the stomach by a 15-year-old boy who authorities say was aiming for two other youths.&#39;, &#39;y&#39;: &#39;33.9198205&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;7608 S. Compton Ave.&#39;, &#39;date&#39;: &#39;1992-05-02&#39;, &#39;x&#39;: &#39;-118.2461881&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;16&#39;}, {&#39;first_name&#39;: &#39;Kevin A.&#39;, &#39;last_name&#39;: &#39;Evanahen&#39;, &#39;neighborhood&#39;: &#39;Del Rey&#39;, &#39;full_name&#39;: &#39;Kevin A. Evanahen&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;24&#39;, &#39;story&#39;: &#39;Kevin A. Evanahen, a 24-year-old white man, died Friday, May 1, 1992, in Del Rey. Evanahen fell through the roof of a check-cashing store at Braddock Drive and Inglewood Avenue while trying to put out a fire.&#39;, &#39;y&#39;: &#39;33.99267241&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Braddock Drive &amp; Inglewood Boulevard&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.4144533&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;17&#39;}, {&#39;first_name&#39;: &#39;Jose L.&#39;, &#39;last_name&#39;: &#39;Garcia&#39;, &#39;neighborhood&#39;: &#39;Boyle Heights&#39;, &#39;full_name&#39;: &#39;Jose L. Garcia&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;15&#39;, &#39;story&#39;: &#39;Jose L. Garcia, a 15-year-old Latino, was shot and killed Thursday, April 30, 1992, in the 1000 block of South Fresno Street in Boyle Heights. Garcia died from a gunshot wound to the chest, reportedly after a fight. His death may have been gang-related.&#39;, &#39;y&#39;: &#39;34.0275527&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;1005 S. Fresno St.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2070419&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;18&#39;}, {&#39;first_name&#39;: &#39;Mark&#39;, &#39;last_name&#39;: &#39;Garcia&#39;, &#39;neighborhood&#39;: &#39;Lennox&#39;, &#39;full_name&#39;: &#39;Mark Garcia&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;15&#39;, &#39;story&#39;: &#34;Mark Garcia, a 15-year-old Latino youth, was shot and killed Thursday, April 30, 1992, in Lennox. Friends said he was drawn by curiosity to the looting and fires in a mini-mall at Hawthorne Boulevard and 101st Street but did not participate. An initial Sheriff&#39;s Department report alleged that Mark was one of four jewelry shop looters who fled in a black Ford Tempo and engaged in a shootout with Deputies Wayne Beckley and Jeffrey Moore. The suspected looters bailed out of their car six blocks away. Deputies caught up with them in a nearby parking lot and returned fire, killing Mark. The boy turned out to be unarmed. Witnesses, including two youths in the Tempo, have told The Times that Mark had not been in the car with them. Sheriff&#39;s investigators later confirmed that Mark was already at the parking lot when the looting suspects arrived and was shot while fleeing with them from deputies.&#34;, &#39;y&#39;: &#39;33.93895407&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;10700 block of Burin Avenue&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3537656&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;19&#39;}, {&#39;first_name&#39;: &#39;Elias&#39;, &#39;last_name&#39;: &#39;Garcia Rivera&#39;, &#39;neighborhood&#39;: &#39;Valley Glen&#39;, &#39;full_name&#39;: &#39;Elias Garcia Rivera&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1993-10-26/local/me-49859_1_murder-charge&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;32&#39;, &#39;story&#39;: &#39;Elias Garcia Rivera, a 32-year-old Latino, died Dec. 16, 1992, at St. Joseph Medical Center in Burbank. He had been in critical condition with a fractured skull for nearly eight months. Garcia had been struck at the base of the skull during an altercation on Wednesday, April 29, at an apartment complex in the 12800 block of Vanowen Street in Valley Glen. On Oct. 25, 1993, Traville J. Craig, 19, was convicted of first-degree murder and sentenced to life in prison.&#39;, &#39;y&#39;: &#39;34.1939342&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;12834 Vanowen St.&#39;, &#39;date&#39;: &#39;1992-12-16&#39;, &#39;x&#39;: &#39;-118.4137912&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;20&#39;}, {&#39;first_name&#39;: &#39;Andreas&#39;, &#39;last_name&#39;: &#39;Garnica&#39;, &#39;neighborhood&#39;: &#39;Pico-Union&#39;, &#39;full_name&#39;: &#39;Andreas Garnica&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;36&#39;, &#39;story&#39;: &#34;Andreas Garnica, a 36-year-old Latino, was stabbed to death Thursday, April 30, 1992, in Pico-Union. Garnica was attacked in the 2000 block of West Pico Boulevard during a drug deal and street robbery. Detectives were unable to find the family of Adolfo Morales, also known as Andres J. Garnica, until they received a lead through a wire service reporter&#39;s inquiry.&#34;, &#39;y&#39;: &#39;34.0468443&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;2034 W. Pico Blvd.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2818793&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;21&#39;}, {&#39;first_name&#39;: &#39;Meeker&#39;, &#39;last_name&#39;: &#39;Gibson&#39;, &#39;neighborhood&#39;: &#39;Pomona&#39;, &#39;full_name&#39;: &#39;Meeker Gibson&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;35&#39;, &#39;story&#39;: &#39;Meeker Gibson, a 35-year-old black man, was shot and killed Friday, May 1, 1992, in an apparent drive-by shooting at a telephone stand at a gas station at Holt and Loranne avenues in Pomona.&#39;, &#39;y&#39;: &#39;34.0628458&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Holt &amp; Loranne avenues&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-117.7306469&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;22&#39;}, {&#39;first_name&#39;: &#39;Matthew D.&#39;, &#39;last_name&#39;: &#39;Haines&#39;, &#39;neighborhood&#39;: &#39;Long Beach&#39;, &#39;full_name&#39;: &#39;Matthew D. Haines&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;32&#39;, &#39;story&#39;: &#39;Matthew Haines, a 32-year-old white man, was beaten and shot in the head, Thursday, April 30, 1992, in Long Beach. Haines and his nephew, Scott Coleman, 26, were pulled from Haines\&#39; motorcycle at the corner of Lemon Avenue and Pacific Coast Highway. Haines was beaten, kicked and fatally shot in the head. Coleman was shot but survived. In February 1993, a Superior Court jury acquitted Larry Williams, 24, Fabian Nixon, 19, and Brent Lamar Jones, 18, of murder. Instead they were found guilty of assault with a deadly weapon and conspiring to assault, loot and rob. The jury said the three weren\&#39;t guilty of murder because &#34;there wasn\&#39;t evidence proving that the three defendants actually did shoot the victim,&#34; the forewoman said at the time. Williams and Nixon were sentenced to nearly six years in prison and ordered to pay restitution. Jones, who was a minor at the time, was sentenced to five years and eight months in the California Youth Authority and ordered to pay $5,000 to a crime victims\&#39; restitution fund.&#39;, &#39;y&#39;: &#39;33.7898575&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;Lemon Avenue &amp; Pacific Coast Highway&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.1785114&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;23&#39;}, {&#39;first_name&#39;: &#39;Jimmie&#39;, &#39;last_name&#39;: &#39;Harris&#39;, &#39;neighborhood&#39;: &#39;South Park&#39;, &#39;full_name&#39;: &#39;Jimmie Harris&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;38&#39;, &#39;story&#39;: &#39;Jimmie Harris, a 38-year-old black man, died Monday, May 4, 1992, at a local hospital. Harris was involved in a car accident April 29 at the intersection of Avalon Boulevard and Slauson Avenue in South Park.&#39;, &#39;y&#39;: &#39;33.989245&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Avalon Boulevard &amp; Slauson Avenue&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.2651995&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;24&#39;}, {&#39;first_name&#39;: &#39;DeAndre&#39;, &#39;last_name&#39;: &#39;Harrison&#39;, &#39;neighborhood&#39;: &#39;Green Meadows&#39;, &#39;full_name&#39;: &#39;DeAndre Harrison&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;17&#39;, &#39;story&#39;: &#39;DeAndre Harrison, a 17-year-old-black man, was fatally shot Thursday, April 30, 1992, near the intersection of Central Avenue and 112th Street in Green Meadows. He was taken to Martin Luther King Jr./Drew Medical Center, where he died. Less than four hours after truck driver Reginald O. Denny and others were attacked at Florence and Normandie, four LAPD officers in a patrol car said they came under intense fire from looters outside a Korean American-owned store in Green Meadows at Central Avenue and 112th Street. The officers returned fire and then sped off to await reinforcements. One of seven rounds they fired had hit a heavyset, shirtless gunman. When they returned, the victim and his weapon had vanished. LAPD officials later learned that 17-year-old Harrison had died of a gunshot wound at the hospital, and ballistics tests showed that he had been struck by a 9-millimeter bullet fired by an LAPD officer. Harrison was angry over the verdicts in the King beating case, relatives said, and had helped loot clothing stores earlier in the night. But whether he was the shirtless suspect who shot at police is another question. About 10:30 p.m., there was a soft knock on the door of an apartment Harrison\&#39;s girlfriend shared with her mother, Myra Collins. It was Harrison, Collins said later, and he was wearing a blood-drenched T-shirt with a small bullet hole in the chest. &#34;It was just like when you watch these westerns and they stagger in the door,&#34; she said. &#34;I don\&#39;t know what DeAndre was doing,&#34; Collins said. &#34;I don\&#39;t know if he was an angel or a devil. But he did have on a white T-shirt.&#34; &#34;He was just a kid that got caught up in a vicious cycle,&#34; said Verbum Dei High School Principal Robert Mendoza, who had known Harrison for years. &#34;It\&#39;s very difficult to live around here.&#34;&#39;, &#39;y&#39;: &#39;33.9294721&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Central Avenue &amp; 112th Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2542949&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;25&#39;}, {&#39;first_name&#39;: &#39;Paul D.&#39;, &#39;last_name&#39;: &#39;Horace&#39;, &#39;neighborhood&#39;: &#39;Central-Alameda&#39;, &#39;full_name&#39;: &#39;Paul D. Horace&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;38&#39;, &#39;story&#39;: &#34;Paul D. Horace, a 38-year-old black man, was shot and killed Friday, May 1, 1992, in the 1400 block of East Walnut Avenue in Central-Alameda. Horace, of Benicia, was fatally shot while trying to buy cocaine on the edge of Los Angeles&#39; garment district, police said.&#34;, &#39;y&#39;: &#39;34.0217355&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;1439 E. Walnut&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.2474139&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;26&#39;}, {&#39;first_name&#39;: &#39;Betty&#39;, &#39;last_name&#39;: &#39;Jackson&#39;, &#39;neighborhood&#39;: &#39;South Park&#39;, &#39;full_name&#39;: &#39;Betty Jackson&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Female&#39;, &#39;age&#39;: &#39;56&#39;, &#39;story&#39;: &#39;Betty Jackson, a 56-year-old black woman, died Friday, May 1, 1992, in South Park while rushing to deliver some barbecued chicken to a friend before the citywide evening curfew began. The small car that Jackson and her sister were in was struck by a van at Main and 51st streets. Traffic lights were out throughout the area. &#34;Betty was very generous,&#34; said Ingrid Chamberlin, a relative. &#34;Betty was like the one person you would want to win the lottery. If she\&#39;s rich, everybody\&#39;s rich. That\&#39;s the kind of person she is.&#34;&#39;, &#39;y&#39;: &#39;33.9965216&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Main &amp; 51st streets&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.2739305&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;27&#39;}, {&#39;first_name&#39;: &#39;Dennis Ray&#39;, &#39;last_name&#39;: &#39;Jackson&#39;, &#39;neighborhood&#39;: &#39;Watts&#39;, &#39;full_name&#39;: &#39;Dennis Ray Jackson&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;38&#39;, &#39;story&#39;: &#39;Dennis Ray Jackson, a 38-year-old black man, was shot and killed Thursday, April 30, 1992, in Watts. Jackson and Anthony Taylor, 31, both longtime residents of Watts, had been drinking beer in a parking lot adjacent to the Nickerson Gardens housing project when they were caught in a firefight between police and an alleged sniper.&#39;, &#39;y&#39;: &#39;33.93229185&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;11322 Alvaro St.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2537567&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;28&#39;}, {&#39;first_name&#39;: &#39;Tranh&#39;, &#39;last_name&#39;: &#39;Lam&#39;, &#39;neighborhood&#39;: &#39;Compton&#39;, &#39;full_name&#39;: &#39;Tranh Lam&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-08-17/news/mn-5142_1_thanh-lam&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;25&#39;, &#39;story&#39;: &#34;Thanh Lam, a 25-year-old Asian man, was shot and killed Thursday, April 30, 1992, in Compton. Lam was leaving his family&#39;s market in Compton, which had been looted and burned the night before. The traffic signal at Willowbrook Avenue and Alondra Boulevard had turned yellow, and Lam slowed to a stop. A car bumped him from the rear and pulled up in the next lane. At least two gunmen leaned out with handguns and began firing. One bullet shattered the truck&#39;s window; a volley of shots ripped into the cab. Four bullets hit Lam, and within minutes he was dead.&#34;, &#39;y&#39;: &#39;33.8885943&#39;, &#39;race&#39;: &#39;Asian&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Willowbrook Avenue &amp; Alondra Boulevard&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2238673&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;29&#39;}, {&#39;first_name&#39;: &#39;Edward Song&#39;, &#39;last_name&#39;: &#39;Lee&#39;, &#39;neighborhood&#39;: &#39;Koreatown&#39;, &#39;full_name&#39;: &#39;Edward Song Lee&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;18&#39;, &#39;story&#39;: &#39;Edward Song Lee, an 18-year-old Asian man, was shot and killed Thursday, April 30, 1992, in Koreatown. Lee, a Korean American, was attempting to protect shops near 3rd Street and Hobart Boulevard when he was apparently shot by fellow Korean Americans who mistook him for a looter.&#39;, &#39;y&#39;: &#39;34.0689851&#39;, &#39;race&#39;: &#39;Asian&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;Hobart Boulevard &amp; 3rd Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3054392&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;30&#39;}, {&#39;first_name&#39;: &#39;Frank D.&#39;, &#39;last_name&#39;: &#39;Lopez&#39;, &#39;neighborhood&#39;: &#39;Downtown&#39;, &#39;full_name&#39;: &#39;Frank D. Lopez&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;36&#39;, &#39;story&#39;: &#39;Frank D. Lopez, a 36-year-old Latino, died Thursday, April 30, 1992, after he was struck by a truck driven by a hit-and-run motorist at 16th Street and Central Avenue south of downtown Los Angeles.&#39;, &#39;y&#39;: &#39;34.0264271&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;16th Street &amp; Central Avenue&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2487649&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;31&#39;}, {&#39;first_name&#39;: &#39;Darnell R.&#39;, &#39;last_name&#39;: &#39;Mallory&#39;, &#39;neighborhood&#39;: &#39;Hollywood&#39;, &#39;full_name&#39;: &#39;Darnell R. Mallory&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;18&#39;, &#39;story&#39;: &#39;Darnell R. Mallory, an 18-year-old black man, Jerel L. Channell, a 26-year-old black man, and Juanita Pettaway, a 37-year-old black woman, were killed in an auto accident Thursday, April 30, 1992, in Hollywood. The trio fled after Beverly Hills police officers noticed a defective taillight on their car and tried to stop them. After a high-speed chase down side streets, their car jumped a curb and crashed into a wall at Santa Monica Boulevard and Seward Street. An investigation showed that the three had robbed a man of his wallet in West Los Angeles. &#34;We have no reason to believe this was anything more than a common street robbery,&#34; said police. &#34;This is considered a riot case because of the riot-related robbery,&#34; the coroner\&#39;s report says.&#39;, &#39;y&#39;: &#39;34.09097156&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Santa Monica Boulevard &amp; Seward Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3341384&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;32&#39;}, {&#39;first_name&#39;: &#39;Lucie R.&#39;, &#39;last_name&#39;: &#39;Maronian&#39;, &#39;neighborhood&#39;: &#39;Altadena&#39;, &#39;full_name&#39;: &#39;Lucie R. Maronian&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1994-10-06/local/me-47089_1_lesser-crimes&#39;, &#39;gender&#39;: &#39;Female&#39;, &#39;age&#39;: &#39;51&#39;, &#39;story&#39;: &#34;Lucie Maronian, a 51-year-old white woman, was stabbed to death Friday, May 1, 1992, in the 1800 block of East New York Drive in Altadena. Maronian was found stabbed in her home. According to sheriff&#39;s investigators, she was killed after confronting a group of teenagers who had been chasing her 14-year-old son and his friend from a nearby intersection. In October 1994, two Altadena teenagers, previously accused of the murder of Maronian, were given five years&#39; probation on related charges. O&#39;Dell Whitley Jr., 19, and Leonard Hampton, 18, were sentenced in Pasadena Superior Court for commercial burglary of an Arcadia sporting goods store and attempted robbery of a pedestrian. The two originally were charged with a series of crimes that included the stabbing of Maronian. In April 1993, Whitley and Hampton were found guilty of the lesser crimes. But a mistrial was declared on the murder charge when only four of the 12 jurors voted for conviction. The district attorney decided not to retry the two for murder.&#34;, &#39;y&#39;: &#39;34.1785051&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;1800 block of East New York Drive&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.1134357&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;33&#39;}, {&#39;first_name&#39;: &#39;Howard Eugene&#39;, &#39;last_name&#39;: &#39;Martin&#39;, &#39;neighborhood&#39;: &#39;Pasadena&#39;, &#39;full_name&#39;: &#39;Howard Eugene Martin&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;22&#39;, &#39;story&#39;: &#39;Howard Eugene Martin, a 22-year-old black man, was shot and killed Sunday, May 3, 1992, near the intersection of North Los Robles Avenue and Claremont Street in Pasadena. He was known as &#34;Nine Lives.&#34; Twice in the last five years, Martin had been a passenger in cars where the driver was killed. Once, it was a late-night automobile crash. The other time a friend was shot in the head by masked gunmen. &#34;The boy just fell into Howard\&#39;s lap,&#34; recalls his sister, Wanda. Martin\&#39;s luck finally ran out three days after the verdicts in the King beating case. The father of three, who grew up only a couple of blocks from King, was killed by a stray bullet. The incident began, police said, when two officers tried to disperse more than 150 party-goers at a Pasadena apartment complex but were greeted with rocks and bottles -- and gunshots. Nearly 25 more officers arrived quickly, and 10 of them fired a total of 70 rounds at several assailants. Martin, relatives said, was visiting friends at a nearby apartment when he stepped onto a balcony to look at what was going on. He was struck in the head by a police bullet that apparently ricocheted off the street, police said. Martin\&#39;s sister and other relatives said police should have shown more control over their gunfire. &#34;They probably felt they were under attack,&#34; she said. &#34;But that doesn\&#39;t justify firing 70 rounds.&#34;&#39;, &#39;y&#39;: &#39;34.1668637&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;near North Los Robles Avenue &amp; Claremont Street&#39;, &#39;date&#39;: &#39;1992-05-03&#39;, &#39;x&#39;: &#39;-118.141613&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;34&#39;}, {&#39;first_name&#39;: &#39;Ira F.&#39;, &#39;last_name&#39;: &#39;McCurry&#39;, &#39;neighborhood&#39;: &#39;Green Meadows&#39;, &#39;full_name&#39;: &#39;Ira F. McCurry&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1582_1_south-los-angeles&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;45&#39;, &#39;story&#39;: &#39;Ira F. McCurry, a 45-year-old white man, was shot and killed Thursday, April 30, 1992, near the intersection of 102nd Street and Avalon Boulevard in Green Meadows. McCurry was shot in the head as he tried to stop looters from starting a fire in a liquor store that could have spread to the adjacent residence he shared with a friend. An Army veteran, McCurry had fallen on hard times before meeting county golf course maintenance worker John Huff two years ago. McCurry, who was homeless, was employed at the same golf course as part of a general relief workfare program when Huff took him into his Watts-area home. &#34;Over time, he became a part of my family,&#34; Huff, 50, said.&#39;, &#39;y&#39;: &#39;33.9437558&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Avalon Boulevard &amp; 102nd Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.265163&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;35&#39;}, {&#39;first_name&#39;: &#39;Alfred V.&#39;, &#39;last_name&#39;: &#39;Miller&#39;, &#39;neighborhood&#39;: &#39;Chesterfield Square&#39;, &#39;full_name&#39;: &#39;Alfred V. Miller&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-16/local/me-1888_1_shooting-death&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;32&#39;, &#39;story&#39;: &#39;Alfred V. Miller, a 32-year-old black man, was fatally shot Friday, May 1, 1992, in Chesterfield Square. Miller was wounded as he rode in a car at the intersection of Florence Avenue and Cimarron Street. He was taken to Daniel Freeman Memorial Hospital, where he was pronounced dead. The drive-by shooting of Miller, who was wearing a body cast from a previous shooting, may have been connected to a past feud, authorities said. &#34;There was no exchange of words, no confrontation -- just the shots fired,&#34; said LAPD Det. Rosemary Sanchez. A suspect was arrested in the Miller slaying, but the district attorney\&#39;s office decided that the witness\&#39; identification was too shaky.&#39;, &#39;y&#39;: &#39;33.9745911&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;Florence Avenue &amp; Cimarron Street&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.3157372&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;36&#39;}, {&#39;first_name&#39;: &#39;Arturo C.&#39;, &#39;last_name&#39;: &#39;Miranda&#39;, &#39;neighborhood&#39;: &#39;Green Meadows&#39;, &#39;full_name&#39;: &#39;Arturo C. Miranda&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1582_1_south-los-angeles&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;23&#39;, &#39;story&#39;: &#39;Arturo C. Miranda, a 23-year-old Latino, was fatally shot Wednesday, April 29, 1992, near the intersection of 120th Street and Central Avenue in Green Meadows. Miranda was riding home from a soccer game with friends when a bullet tore through the vehicle, striking him in the head. His friends rushed him to Memorial Hospital in Gardena, where he was pronounced dead. Miranda had arrived in Los Angeles from Mexico less than a year before and had worked for a textile company. His co-workers raised enough money so his body could be returned to his hometown of Guerrero, Mexico.&#39;, &#39;y&#39;: &#39;33.9237304&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;120th Street &amp; Central Avenue&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.2543429&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;37&#39;}, {&#39;first_name&#39;: &#39;Suzanne R.&#39;, &#39;last_name&#39;: &#39;Morgan&#39;, &#39;neighborhood&#39;: &#39;Watts&#39;, &#39;full_name&#39;: &#39;Suzanne R. Morgan&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Female&#39;, &#39;age&#39;: &#39;24&#39;, &#39;story&#39;: &#39;Suzanne R. Morgan, a 24-year-old black woman, was shot and killed Friday, May 1, 1992, in the 2100 block of East 115th Street in Watts. Morgan was allegedly shot at her apartment by her boyfriend. Police say he obtained the gun because of the rioting.&#39;, &#39;y&#39;: &#39;33.9304917&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;2137 E. 115th St.&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.2344108&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;38&#39;}, {&#39;first_name&#39;: &#39;Nissar&#39;, &#39;last_name&#39;: &#39;Mustafa&#39;, &#39;neighborhood&#39;: &#39;Harvard Heights&#39;, &#39;full_name&#39;: &#39;Nissar Mustafa&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;20&#39;, &#39;story&#39;: &#39;Nissar Mustafa (John Doe #172). The charred and decomposed body of John Doe #172 was discovered Aug. 12, 1992, in Harvard Heights in the 1600 block of South Western Avenue. The body was found by a demolition crew clearing the rubble inside a J.J. Newberry store that was burned by looters on the first night of riots. The body was later identified as Nissar Mustafa, a 20-year-old white man.&#39;, &#39;y&#39;: &#39;34.0435539&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;1601 S. Western Ave.&#39;, &#39;date&#39;: &#39;1992-08-12&#39;, &#39;x&#39;: &#39;-118.3090341&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;39&#39;}, {&#39;first_name&#39;: &#39;Ernest&#39;, &#39;last_name&#39;: &#39;Neal Jr.&#39;, &#39;neighborhood&#39;: &#39;Gramercy Park&#39;, &#39;full_name&#39;: &#39;Ernest Neal Jr.&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;27&#39;, &#39;story&#39;: &#39;Ernest Neal Jr., a 27-year-old black man, was shot to death Thursday, April 30, 1992, in Gramercy Park. Neal and Elbert Wilkins, 33, were killed as they stood outside a liquor store at 92nd Street and Western Avenue.&#39;, &#39;y&#39;: &#39;33.952709&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Western Avenue &amp; 92nd Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.309006&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;40&#39;}, {&#39;first_name&#39;: &#39;Anthony&#39;, &#39;last_name&#39;: &#39;Netherly&#39;, &#39;neighborhood&#39;: &#39;Florence&#39;, &#39;full_name&#39;: &#39;Anthony Netherly&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;21&#39;, &#39;story&#39;: &#39;Anthony Netherly, a 21-year-old black man, was shot to death Thursday, April 30, 1992, in Florence. Netherly was struck in the head by a random bullet while riding in a car at the intersection of 78th and San Pedro streets.&#39;, &#39;y&#39;: &#39;33.9687806&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;San Pedro &amp; 78th streets&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2695156&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;41&#39;}, {&#39;first_name&#39;: &#39;Charles W.&#39;, &#39;last_name&#39;: &#39;Orebo&#39;, &#39;neighborhood&#39;: &#39;Florence&#39;, &#39;full_name&#39;: &#39;Charles W. Orebo&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;21&#39;, &#39;story&#39;: &#39;Charles Orebo, a 21-year-old black man, was shot and killed Friday, May 1, 1992, near the intersection of Florence Avenue and Flower Street in Florence. Charles &#34;Sticks&#34; Orebo and two friends, Andre Webb and Lavelle &#34;Frog&#34; Williams were driving toward a South Los Angeles house where Webb planned to spend the night. Near Florence Avenue and the 110 Freeway, Orebo tried to make a lane change, nearly cutting off a car behind him. The other driver honked and pulled alongside at a stoplight. Williams drew a handgun, loaded it and pointed it past Orebo toward the other driver, an LAPD officer who was out of uniform and en route to work. &#34;The guy looked at us,&#34; Webb said, &#34;and he jumped like he was in shock. Then he pulled up his gun. . . . Then he shot like three times and hit Sticks.&#34; Orebo, mortally wounded, punched the accelerator. The car lurched into a wall and caught fire. Orebo, a dropout and the father of a 4-year-old son, had planned to get married the next month and become an auto mechanic, said his mother, Georgia Alfred. He had been jailed a couple of times for traffic tickets and other small offenses, she said. &#34;But nothing violent. No guns or anything like that.&#34; Alfred said her son and Williams watched the verdicts in the King beating case together and were angry, &#34;but he wasn\&#39;t going out beating anyone or carrying a gun.&#34; &#34;From what I gathered, my son didn\&#39;t know [Williams] had the gun until he pulled it up,&#34; she said. &#34;I\&#39;m angry, but I\&#39;m angry with the young man.&#34;&#39;, &#39;y&#39;: &#39;33.9746575&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Florence Avenue &amp; Flower Street&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.2812901&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;42&#39;}, {&#39;first_name&#39;: &#39;Juanita&#39;, &#39;last_name&#39;: &#39;Pettaway&#39;, &#39;neighborhood&#39;: &#39;Hollywood&#39;, &#39;full_name&#39;: &#39;Juanita Pettaway&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Female&#39;, &#39;age&#39;: &#39;37&#39;, &#39;story&#39;: &#39;Darnell R. Mallory, an 18-year-old black man, Jerel L. Channell, a 26-year-old black man, and Juanita Pettaway, a 37-year-old black woman, were killed in an auto accident Thursday, April 30, 1992, in Hollywood. The trio fled after Beverly Hills police officers noticed a defective taillight on their car and tried to stop them. After a high-speed chase down side streets, their car jumped a curb and crashed into a wall at Santa Monica Boulevard and Seward Street. An investigation showed that the three had robbed a man of his wallet in West Los Angeles. &#34;We have no reason to believe this was anything more than a common street robbery,&#34; said police. &#34;This is considered a riot case because of the riot-related robbery,&#34; the coroner\&#39;s report says.&#39;, &#39;y&#39;: &#39;34.090696&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Santa Monica Boulevard &amp; Seward Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3331771&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;43&#39;}, {&#39;first_name&#39;: &#39;Juan A.&#39;, &#39;last_name&#39;: &#39;Pineda&#39;, &#39;neighborhood&#39;: &#39;Silver Lake&#39;, &#39;full_name&#39;: &#39;Juan A. Pineda&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;20&#39;, &#39;story&#39;: &#39;Juan A. Pineda, a 20-year-old Latino, was fatally shot Thursday, April 30, 1992, at 4028 Santa Monica Blvd. in Silver Lake. He was taken to a local hospital, were he died. Pineda, a cook at a Mexican restaurant on Wilshire Boulevard, was struck by several bullets during a firefight outside Auto Color Plus Inc., a car paint and supply shop near the corner of Santa Monica and Sunset boulevards.&#39;, &#39;y&#39;: &#39;34.092221&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;4028 Santa Monica Blvd.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.281326&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;44&#39;}, {&#39;first_name&#39;: &#39;Hugo G.&#39;, &#39;last_name&#39;: &#39;Ramirez&#39;, &#39;neighborhood&#39;: &#39;Baldwin Park&#39;, &#39;full_name&#39;: &#39;Hugo G. Ramirez&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;23&#39;, &#39;story&#39;: &#39;Hugo Ramirez, a 23-year-old Latino, was shot and killed Sunday, May 3, 1992, in Baldwin Park. Ramirez was found face-down in the street, with a gunshot wound to the head, in the 12700 block of Bess Street.&#39;, &#39;y&#39;: &#39;34.070238&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;12732 Bess St.&#39;, &#39;date&#39;: &#39;1992-05-03&#39;, &#39;x&#39;: &#39;-117.997106&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;45&#39;}, {&#39;first_name&#39;: &#39;Aaron&#39;, &#39;last_name&#39;: &#39;Ratinoff&#39;, &#39;neighborhood&#39;: &#39;Sawtelle&#39;, &#39;full_name&#39;: &#39;Aaron Ratinoff&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;68&#39;, &#39;story&#39;: &#39;Aaron Ratinoff, a 68-year-old white man, died Friday, May 1, 1992, in the 11600 block of Gateway Boulevard in Sawtelle. Ratinoff was strangled by a supermarket produce manager in a dispute over corn husks. Ratinoff would never have ended up at the Bob\&#39;s Market on Gateway Boulevard in West Los Angeles if the store where he normally shopped had remained open during the riots. The produce manager apparently got angry when Ratinoff dropped some corn husks on the floor while shopping for vegetables, and the pair tussled. Coroner\&#39;s spokesman Bob Dambacher said the criterion his office has used for riot-related deaths was simple: &#34;Would this person have died at that particular time and that particular place if the riots had not occurred?&#34;&#39;, &#39;y&#39;: &#39;34.0286551&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;11690 Gateway Blvd.&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.4431&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;46&#39;}, {&#39;first_name&#39;: &#39;Victor R.&#39;, &#39;last_name&#39;: &#39;Rivas&#39;, &#39;neighborhood&#39;: &#39;Pico-Union&#39;, &#39;full_name&#39;: &#39;Victor R. Rivas&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;26&#39;, &#39;story&#39;: &#39;Victor R. Rivas, a 26-year-old Latino, was shot and killed Sunday, May 3, 1992, in Pico-Union. Rivas was shot after he allegedly refused to stop his car at a barricade and tried several times to run a National Guardsman down at the intersection of Pico Boulevard and Vermont Avenue.&#39;, &#39;y&#39;: &#39;34.0472563&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Pico Boulevard &amp; Vermont Avenue&#39;, &#39;date&#39;: &#39;1992-05-03&#39;, &#39;x&#39;: &#39;-118.291583&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;47&#39;}, {&#39;first_name&#39;: &#39;William&#39;, &#39;last_name&#39;: &#39;Ross&#39;, &#39;neighborhood&#39;: &#39;Koreatown&#39;, &#39;full_name&#39;: &#39;William Ross&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-09-10/news/mn-326_1_unidentified-bodies&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;33&#39;, &#39;story&#39;: &#34;William Ross, a 33-year-old white man, died Friday, May 1, 1992, in Koreatown. Ross&#39; body was found Saturday, May 2, inside a market that had been firebombed in the 2800 block of West 9th Street and identified 10 days later through dental records.&#34;, &#39;y&#39;: &#39;34.05569&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;2882 W. 9th St.&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.291274&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;48&#39;}, {&#39;first_name&#39;: &#39;Juan V.&#39;, &#39;last_name&#39;: &#39;Salgado&#39;, &#39;neighborhood&#39;: &#39;Historic South-Central&#39;, &#39;full_name&#39;: &#39;Juan V. Salgado&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;20&#39;, &#39;story&#39;: &#39;The body of Juan V. Salgado, a 20-year-old Latino, was found May 20, 1992, inside a burned clothing store in the 3100 block of South Main Street called Collective Merchandise Inc., where he was last seen.&#39;, &#39;y&#39;: &#39;34.02062153&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;3100 block of South Main Street&#39;, &#39;date&#39;: &#39;1992-05-20&#39;, &#39;x&#39;: &#39;-118.2713789&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;49&#39;}, {&#39;first_name&#39;: &#39;Imad&#39;, &#39;last_name&#39;: &#39;Sharaf&#39;, &#39;neighborhood&#39;: &#39;Mission Hills&#39;, &#39;full_name&#39;: &#39;Imad Sharaf&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1993-04-24/local/me-26740_1_slaying-victims&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;31&#39;, &#39;story&#39;: &#34;Imad Sharaf&#39;s body was found the morning of Sunday, May 3, 1992, when firefighters answered a report of a brush fire near the on-ramp to the 405 Freeway at San Fernando Mission Boulevard in Mission Hills. At first, Sharaf, a Granada Hills resident who emigrated from Jordan three years ago, was listed as a riot victim. Detectives now believe that he was drugged before he was set ablaze and that the fire may have been an attempt to make the slaying appear riot-related. Police said that Sharaf, who was a photo lab technician, had been doused with a flammable substance and set afire.&#34;, &#39;y&#39;: &#39;34.27185555&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;San Diego Freeway &amp; San Fernando Mission Boulevard&#39;, &#39;date&#39;: &#39;1992-05-03&#39;, &#39;x&#39;: &#39;-118.4717452&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;50&#39;}, {&#39;first_name&#39;: &#39;Jose&#39;, &#39;last_name&#39;: &#39;Solorzano&#39;, &#39;neighborhood&#39;: &#39;East Hollywood&#39;, &#39;full_name&#39;: &#39;Jose Solorzano&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;25&#39;, &#39;story&#39;: &#39;Jose Solorzano, a 25-year-old Latino, was shot and killed Friday, May 1, 1992, in East Hollywood. Solorzano was shot by a security guard while looting at a store at Vermont Avenue and Santa Monica Boulevard.&#39;, &#39;y&#39;: &#39;34.0908675&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;Vermont Avenue &amp; Santa Monica Boulevard&#39;, &#39;date&#39;: &#39;1992-05-01&#39;, &#39;x&#39;: &#39;-118.291755&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;51&#39;}, {&#39;first_name&#39;: &#39;George A.&#39;, &#39;last_name&#39;: &#39;Sosa&#39;, &#39;neighborhood&#39;: &#39;Huntington Park&#39;, &#39;full_name&#39;: &#39;George A. Sosa&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;20&#39;, &#39;story&#39;: &#39;George A. Sosa, a 20-year-old Latino, was fatally shot Thursday, April 30, 1992, in the 2600 block of Florence Avenue in Huntington Park. Sosa was visiting his girlfriend when a gang member who had been drinking asked him what gang he was in and then opened fire, authorities said. Sosa was dead on arrival at County-USC Medical Center.&#39;, &#39;y&#39;: &#39;33.97418&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;2600 block of Florence Avenue&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.22518059&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;52&#39;}, {&#39;first_name&#39;: &#39;Anthony J.&#39;, &#39;last_name&#39;: &#39;Taylor&#39;, &#39;neighborhood&#39;: &#39;Watts&#39;, &#39;full_name&#39;: &#39;Anthony J. Taylor&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-24/news/mn-378_1_police-officer&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;31&#39;, &#39;story&#39;: &#39;Anthony Taylor, a 31-year-old black man, was shot and killed Thursday, April 30, 1992, in Watts. Taylor and Dennis Ray Jackson, 38, both longtime residents of Watts, had been drinking beer in a parking lot adjacent to the Nickerson Gardens housing project when they were caught in a firefight between police and an alleged sniper.&#39;, &#39;y&#39;: &#39;33.9314634&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;11322 Alvaro St.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.2531966&#39;, &#39;type&#39;: &#39;Officer involved shooting&#39;, &#39;id&#39;: &#39;53&#39;}, {&#39;first_name&#39;: &#39;Dwight&#39;, &#39;last_name&#39;: &#39;Taylor&#39;, &#39;neighborhood&#39;: &#39;Vermont Square&#39;, &#39;full_name&#39;: &#39;Dwight Taylor&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1582_1_south-los-angeles&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;42&#39;, &#39;story&#39;: &#39;Dwight Taylor, a 42-year-old black man, was fatally shot Wednesday, April 29, 1992, in the 4300 block of South Vermont Avenue in Vermont Square. Taylor was taken to a local hospital, where he died. Taylor, a former Cal State Long Beach basketball player, still loved to show off his ball handling to youngsters on the courts around South Los Angeles. In recent years, Taylor worked cutting fish at a neighborhood market. &#34;Fishman,&#34; as friends called him, was on his way to visit his estranged wife and their children on the first night of the riots. When he stopped at a supermarket at Vermont and Vernon avenues to pick up some milk, he was shot in the parking lot along with two teenagers.&#39;, &#39;y&#39;: &#39;34.004453&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;4365 S. Vermont Ave.&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.292169&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;54&#39;}, {&#39;first_name&#39;: &#39;James L.&#39;, &#39;last_name&#39;: &#39;Taylor&#39;, &#39;neighborhood&#39;: &#39;East Hollywood&#39;, &#39;full_name&#39;: &#39;James L. Taylor&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;26&#39;, &#39;story&#39;: &#39;James L. Taylor, a 26-year-old black man, was shot and killed Thursday, April 30, 1992, in East Hollywood. Taylor was shot in the back at the scene of a looted video store and cleaners in the 5200 block of Sunset Boulevard.&#39;, &#39;y&#39;: &#39;34.0982485&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;5213 Sunset Blvd.&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3037557&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;55&#39;}, {&#39;first_name&#39;: &#39;Wallace&#39;, &#39;last_name&#39;: &#39;Tope&#39;, &#39;neighborhood&#39;: &#39;Hollywood&#39;, &#39;full_name&#39;: &#39;Wallace Tope&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-16/local/me-1814_1_looters http://articles.latimes.com/print/1993-12-02/local/me-63138_1_wallace-tope-jr http://articles.latimes.com/print/1994-05-10/local/me-55879_1_reduced-charges&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;54&#39;, &#39;story&#39;: &#39;Wallace Tope, a 54-year-old white man, died Nov. 24, 1993. Tope had been in coma since he was assaulted April 30, 1992, in the 5500 block of West Sunset Boulevard in Hollywood. A street evangelist, Tope went to a shopping mall at the corner of Western Avenue and Sunset Boulevard, where hundreds of people had gathered to watch looters ransack a Sav-On drugstore. There he began to preach, urging the crowd to stop the looting and place their faith in Jesus. As he was preaching, two men began to beat him. When he tried to flee, he fell to the ground, and the men kicked him repeatedly in the head for nearly three minutes, witnesses said. Tope was rescued by a passing ambulance, but he lapsed into a coma shortly after arriving at the hospital. Two men charged with murder in the last major case of the Los Angeles riots each pleaded no contest in the fatal beating of Tope and were sentenced to prison May 9, 1994. Fidel Ortiz, 22, and Leonard Sosa, 24, both former warehouse workers for a Dodger Stadium concessionaire, entered the pleas to reduced charges of voluntary manslaughter on the same day they were to go on trial for the April 30, 1992, attack. Under a plea agreement, the judge in the case sentenced Ortiz to an 11-year prison term and Sosa to a six-year term.&#39;, &#39;y&#39;: &#39;34.0980819&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Solved&#39;, &#39;address&#39;: &#39;5510 W. Sunset Blvd.&#39;, &#39;date&#39;: &#39;1993-11-24&#39;, &#39;x&#39;: &#39;-118.3098224&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;56&#39;}, {&#39;first_name&#39;: &#39;Edward Anthony&#39;, &#39;last_name&#39;: &#39;Travens&#39;, &#39;neighborhood&#39;: &#39;San Fernando&#39;, &#39;full_name&#39;: &#39;Edward Anthony Travens&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-07/news/mn-2526_1_young-men&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;15&#39;, &#39;story&#39;: &#39;Edward A. Travens, a 15-year-old white youth, was fatally shot Wednesday, April 29, 1992, near the intersection of San Fernando Road and Mission Boulevard in San Fernando. Travens was driving to a video store with his brother, Allen, 21, and a friend, Dan Ortiz. About 9:25 p.m., at the intersection of San Fernando Road and Mission Boulevard, they were approached by a man on foot. &#34;All they heard was \&#39;Where you from?\&#39; and \&#39;Boom, boom, boom, boom, boom,\&#39;&#34; said Travens\&#39; uncle, Richard Ballasteros. Five bullets pierced Travens\&#39; wiry body. Ortiz drove him to a hospital while Allen Travens cradled his brother in his arms. Eddie Travens died three hours later.&#39;, &#39;y&#39;: &#39;34.28418731&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;San Fernando Road &amp; San Fernando Mission Boulevard&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.4430027&#39;, &#39;type&#39;: &#39;Not riot-related&#39;, &#39;id&#39;: &#39;57&#39;}, {&#39;first_name&#39;: &#39;Eduardo C.&#39;, &#39;last_name&#39;: &#39;Vela&#39;, &#39;neighborhood&#39;: &#39;Ladera Heights&#39;, &#39;full_name&#39;: &#39;Eduardo C. Vela&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-06-21/news/mn-1582_1_south-los-angeles&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;33&#39;, &#39;story&#39;: &#39;Eduardo C. Vela, a 33-year-old Latino, was shot and killed Wednesday, April 29, 1992, in the 5100 block of West Slauson Avenue in Ladera Heights. Vela, a Mexican immigrant who ran a Japanese restaurant in Bakersfield, was visiting Los Angeles on the day the riots broke out. He was killed as he waited behind the steering wheel of his disabled car while a co-worker, Estevan Ortigoza, went to make a telephone call.&#39;, &#39;y&#39;: &#39;33.9876036&#39;, &#39;race&#39;: &#39;Latino&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;5100 block of West Slauson Avenue&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.3687199&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;58&#39;}, {&#39;first_name&#39;: &#39;Fredrick&#39;, &#39;last_name&#39;: &#39;Ward&#39;, &#39;neighborhood&#39;: &#39;Pacoima&#39;, &#39;full_name&#39;: &#39;Fredrick Ward&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;20&#39;, &#39;story&#39;: &#39;Fredrick Ward, a 20-year-old black man, was shot and killed Saturday, May 2, 1992, in the 11900 block of Cometa Avenue in Pacoima.&#39;, &#39;y&#39;: &#39;34.287098&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;11932 Cometa Ave.&#39;, &#39;date&#39;: &#39;1992-05-02&#39;, &#39;x&#39;: &#39;-118.412778&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;59&#39;}, {&#39;first_name&#39;: &#39;Louis A.&#39;, &#39;last_name&#39;: &#39;Watson&#39;, &#39;neighborhood&#39;: &#39;Vermont Square&#39;, &#39;full_name&#39;: &#39;Louis A. Watson&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1992-05-07/news/mn-2526_1_young-men&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;18&#39;, &#39;story&#39;: &#39;Louis A. Watson, an 18-year-old black man, was fatally shot Wednesday, April 29, 1992, in the 4300 block of South Vermont Avenue in Vermont Square. Struck by a single bullet to the head outside a swap meet, Watson was taken to a local hospital, where he died. Watson, the oldest of seven boys, lived with his mother, Sherry Ann Johnson, and his stepfather on West 43rd. Friends said Watson had toyed briefly with a gang, then rejected it. His friend, Drama, said Watson decided &#34;it wasn\&#39;t worth it. He didn\&#39;t want to die from gangbanging.&#34; So Watson went back to school and to playing the drums, playing football and running track. At Watson\&#39;s funeral, 600 people, many of them teenagers, filled the church to capacity. The service began quietly, with testimony from friends and relatives. Then the grief and tension seemed to escalate to a point where the church was filled with the sound of weeping and wailing.&#39;, &#39;y&#39;: &#39;34.00524354&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;4365 S. Vermont Ave.&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.2915566&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;60&#39;}, {&#39;first_name&#39;: &#39;Elbert O.&#39;, &#39;last_name&#39;: &#39;Wilkins&#39;, &#39;neighborhood&#39;: &#39;Gramercy Park&#39;, &#39;full_name&#39;: &#39;Elbert O. Wilkins&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;33&#39;, &#39;story&#39;: &#39;Elbert O. Wilkins, a 33-year-old black man, was shot to death Thursday, April 30, 1992, in Gramercy Park. Wilkins and Ernest Neal Jr., 27, were killed as they stood outside a liquor store at 92nd Street and Western Avenue.&#39;, &#39;y&#39;: &#39;33.95276731&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;Western Avenue &amp; 92nd Street&#39;, &#39;date&#39;: &#39;1992-04-30&#39;, &#39;x&#39;: &#39;-118.3100043&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;61&#39;}, {&#39;first_name&#39;: &#39;John H.&#39;, &#39;last_name&#39;: &#39;Willers&#39;, &#39;neighborhood&#39;: &#39;Mission Hills&#39;, &#39;full_name&#39;: &#39;John H. Willers&#39;, &#39;url&#39;: &#39;http://articles.latimes.com/print/1993-04-24/local/me-26740_1_slaying-victims&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;37&#39;, &#39;story&#39;: &#39;John H. Willers, a 37-year-old white man, was shot and killed Wednesday, April 29, 1992, in the 10600 block of North Sepulveda Boulevard in Mission Hills. The tile-setter, who was working at a Mission Hills supermarket with his Salt Lake City-based construction crew, was gunned down outside the motel where he was staying. The crew members had stayed up that night watching riot coverage on television. Around 10:45 p.m., they heard the sound of cars colliding outside the motel -- the conclusion of a chase in which, according to police, three people in one car pursued two robbery suspects in another. The crash brought many of the motel guests out onto the street. Willers stayed outside until the injured motorists were taken away by ambulance. According to co-workers, he returned to his room but decided to go back out half an hour later. Shots rang out, and he was found dead in the middle of the street. &#34;He was caught up in the moment when the city was erupting,&#34; said Det. Woodrow Parks of the LAPD\&#39;s Foothill Division. &#34;It probably was a riot-related thing.&#34;&#39;, &#39;y&#39;: &#39;34.263184&#39;, &#39;race&#39;: &#39;White&#39;, &#39;disposition&#39;: &#39;Unsolved&#39;, &#39;address&#39;: &#39;10621 Sepulveda Blvd.&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.46777&#39;, &#39;type&#39;: &#39;Homicide&#39;, &#39;id&#39;: &#39;62&#39;}, {&#39;first_name&#39;: &#39;Willie Bernard&#39;, &#39;last_name&#39;: &#39;Williams&#39;, &#39;neighborhood&#39;: &#39;Chesterfield Square&#39;, &#39;full_name&#39;: &#39;Willie Bernard Williams&#39;, &#39;url&#39;: &#39;&#39;, &#39;gender&#39;: &#39;Male&#39;, &#39;age&#39;: &#39;29&#39;, &#39;story&#39;: &#39;Willie Bernard Williams, a 29-year-old black man, died Wednesday, April 29, 1992, in Chesterfield Square. Williams was thrown from a truck in an accident at Gage and Western avenues in which traffic signals had failed.&#39;, &#39;y&#39;: &#39;33.9823625&#39;, &#39;race&#39;: &#39;Black&#39;, &#39;disposition&#39;: &#39;&#39;, &#39;address&#39;: &#39;Gage &amp; Western avenues&#39;, &#39;date&#39;: &#39;1992-04-29&#39;, &#39;x&#39;: &#39;-118.3089517&#39;, &#39;type&#39;: &#39;Death&#39;, &#39;id&#39;: &#39;63&#39;}] -->
+    <div id = "map" style="width:100%; height:300px;"></div>
+
+        <table border=1 cellpadding=7>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Race</th>
+            </tr>
+            
+            <tr>
+                <td><a href="1/">Cesar A. Aguilar</a></td>
+                <td>1992-04-30</td>
+                <td>Officer involved shooting</td>
+                <td>2009 W. 6th St.</td>
+                <td>18</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="2/">George Alvarez</a></td>
+                <td>1992-05-01</td>
+                <td>Not riot-related</td>
+                <td>Main &amp; College streets</td>
+                <td>42</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="3/">Wilson Alvarez</a></td>
+                <td>1992-05-23</td>
+                <td>Homicide</td>
+                <td>3100 Rosecrans Ave.</td>
+                <td>40</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="4/">Brian E. Andrew</a></td>
+                <td>1992-04-30</td>
+                <td>Officer involved shooting</td>
+                <td>Rosecrans &amp; Chester avenues</td>
+                <td>30</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="5/">Vivian Austin</a></td>
+                <td>1992-05-03</td>
+                <td>Death</td>
+                <td>1600 W. 60th St.</td>
+                <td>87</td>
+                <td>Female</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="6/">Franklin Benavidez</a></td>
+                <td>1992-04-30</td>
+                <td>Officer involved shooting</td>
+                <td>4404 S. Western Ave.</td>
+                <td>27</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="7/">Carol Benson</a></td>
+                <td>1992-05-02</td>
+                <td>Death</td>
+                <td>Harbor Freeway near Slauson Avenue</td>
+                <td>42</td>
+                <td>Female</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="8/">Patrick Bettan</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>2740 W. Olympic Blvd.</td>
+                <td>30</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="9/">Hector Castro</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Vermont &amp; Leeward avenues</td>
+                <td>49</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="10/">Jerel L. Channell</a></td>
+                <td>1992-04-30</td>
+                <td>Death</td>
+                <td>Santa Monica Boulevard &amp; Seward Street</td>
+                <td>26</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="11/">Gregory Davis Jr.</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Vermont Avenue &amp; 43rd Street</td>
+                <td>15</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="12/">John Doe #80</a></td>
+                <td>1992-05-02</td>
+                <td>Homicide</td>
+                <td>5800 block of South Vermont Avenue</td>
+                <td></td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="13/">Harry Doller</a></td>
+                <td>1992-05-01</td>
+                <td>Not riot-related</td>
+                <td>3500 block of Winslow Drive</td>
+                <td>56</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="14/">Kevin J. Edwards</a></td>
+                <td>1992-04-30</td>
+                <td>Not riot-related</td>
+                <td>614 S. Locust Ave.</td>
+                <td>35</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="15/">Howard Epstein</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Slauson &amp; 7th avenues</td>
+                <td>45</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="16/">Juana Espinosa</a></td>
+                <td>1992-05-02</td>
+                <td>Homicide</td>
+                <td>7608 S. Compton Ave.</td>
+                <td>65</td>
+                <td>Female</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="17/">Kevin A. Evanahen</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>Braddock Drive &amp; Inglewood Boulevard</td>
+                <td>24</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="18/">Jose L. Garcia</a></td>
+                <td>1992-04-30</td>
+                <td>Not riot-related</td>
+                <td>1005 S. Fresno St.</td>
+                <td>15</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="19/">Mark Garcia</a></td>
+                <td>1992-04-30</td>
+                <td>Officer involved shooting</td>
+                <td>10700 block of Burin Avenue</td>
+                <td>15</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="20/">Elias Garcia Rivera</a></td>
+                <td>1992-12-16</td>
+                <td>Homicide</td>
+                <td>12834 Vanowen St.</td>
+                <td>32</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="21/">Andreas Garnica</a></td>
+                <td>1992-04-30</td>
+                <td>Not riot-related</td>
+                <td>2034 W. Pico Blvd.</td>
+                <td>36</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="22/">Meeker Gibson</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>Holt &amp; Loranne avenues</td>
+                <td>35</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="23/">Matthew D. Haines</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Lemon Avenue &amp; Pacific Coast Highway</td>
+                <td>32</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="24/">Jimmie Harris</a></td>
+                <td>1992-04-29</td>
+                <td>Death</td>
+                <td>Avalon Boulevard &amp; Slauson Avenue</td>
+                <td>38</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="25/">DeAndre Harrison</a></td>
+                <td>1992-04-30</td>
+                <td>Officer involved shooting</td>
+                <td>Central Avenue &amp; 112th Street</td>
+                <td>17</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="26/">Paul D. Horace</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>1439 E. Walnut</td>
+                <td>38</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="27/">Betty Jackson</a></td>
+                <td>1992-05-01</td>
+                <td>Death</td>
+                <td>Main &amp; 51st streets</td>
+                <td>56</td>
+                <td>Female</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="28/">Dennis Ray Jackson</a></td>
+                <td>1992-04-30</td>
+                <td>Officer involved shooting</td>
+                <td>11322 Alvaro St.</td>
+                <td>38</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="29/">Tranh Lam</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Willowbrook Avenue &amp; Alondra Boulevard</td>
+                <td>25</td>
+                <td>Male</td>
+                <td>Asian</td>
+            </tr>
+            
+            <tr>
+                <td><a href="30/">Edward Song Lee</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Hobart Boulevard &amp; 3rd Street</td>
+                <td>18</td>
+                <td>Male</td>
+                <td>Asian</td>
+            </tr>
+            
+            <tr>
+                <td><a href="31/">Frank D. Lopez</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>16th Street &amp; Central Avenue</td>
+                <td>36</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="32/">Darnell R. Mallory</a></td>
+                <td>1992-04-30</td>
+                <td>Death</td>
+                <td>Santa Monica Boulevard &amp; Seward Street</td>
+                <td>18</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="33/">Lucie R. Maronian</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>1800 block of East New York Drive</td>
+                <td>51</td>
+                <td>Female</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="34/">Howard Eugene Martin</a></td>
+                <td>1992-05-03</td>
+                <td>Officer involved shooting</td>
+                <td>near North Los Robles Avenue &amp; Claremont Street</td>
+                <td>22</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="35/">Ira F. McCurry</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Avalon Boulevard &amp; 102nd Street</td>
+                <td>45</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="36/">Alfred V. Miller</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>Florence Avenue &amp; Cimarron Street</td>
+                <td>32</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="37/">Arturo C. Miranda</a></td>
+                <td>1992-04-29</td>
+                <td>Homicide</td>
+                <td>120th Street &amp; Central Avenue</td>
+                <td>23</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="38/">Suzanne R. Morgan</a></td>
+                <td>1992-05-01</td>
+                <td>Not riot-related</td>
+                <td>2137 E. 115th St.</td>
+                <td>24</td>
+                <td>Female</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="39/">Nissar Mustafa</a></td>
+                <td>1992-08-12</td>
+                <td>Homicide</td>
+                <td>1601 S. Western Ave.</td>
+                <td>20</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="40/">Ernest Neal Jr.</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Western Avenue &amp; 92nd Street</td>
+                <td>27</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="41/">Anthony Netherly</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>San Pedro &amp; 78th streets</td>
+                <td>21</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="42/">Charles W. Orebo</a></td>
+                <td>1992-05-01</td>
+                <td>Officer involved shooting</td>
+                <td>Florence Avenue &amp; Flower Street</td>
+                <td>21</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="43/">Juanita Pettaway</a></td>
+                <td>1992-04-30</td>
+                <td>Death</td>
+                <td>Santa Monica Boulevard &amp; Seward Street</td>
+                <td>37</td>
+                <td>Female</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="44/">Juan A. Pineda</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>4028 Santa Monica Blvd.</td>
+                <td>20</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="45/">Hugo G. Ramirez</a></td>
+                <td>1992-05-03</td>
+                <td>Not riot-related</td>
+                <td>12732 Bess St.</td>
+                <td>23</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="46/">Aaron Ratinoff</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>11690 Gateway Blvd.</td>
+                <td>68</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="47/">Victor R. Rivas</a></td>
+                <td>1992-05-03</td>
+                <td>Officer involved shooting</td>
+                <td>Pico Boulevard &amp; Vermont Avenue</td>
+                <td>26</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="48/">William Ross</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>2882 W. 9th St.</td>
+                <td>33</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="49/">Juan V. Salgado</a></td>
+                <td>1992-05-20</td>
+                <td>Homicide</td>
+                <td>3100 block of South Main Street</td>
+                <td>20</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="50/">Imad Sharaf</a></td>
+                <td>1992-05-03</td>
+                <td>Not riot-related</td>
+                <td>San Diego Freeway &amp; San Fernando Mission Boulevard</td>
+                <td>31</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="51/">Jose Solorzano</a></td>
+                <td>1992-05-01</td>
+                <td>Homicide</td>
+                <td>Vermont Avenue &amp; Santa Monica Boulevard</td>
+                <td>25</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="52/">George A. Sosa</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>2600 block of Florence Avenue</td>
+                <td>20</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="53/">Anthony J. Taylor</a></td>
+                <td>1992-04-30</td>
+                <td>Officer involved shooting</td>
+                <td>11322 Alvaro St.</td>
+                <td>31</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="54/">Dwight Taylor</a></td>
+                <td>1992-04-29</td>
+                <td>Homicide</td>
+                <td>4365 S. Vermont Ave.</td>
+                <td>42</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="55/">James L. Taylor</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>5213 Sunset Blvd.</td>
+                <td>26</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="56/">Wallace Tope</a></td>
+                <td>1993-11-24</td>
+                <td>Homicide</td>
+                <td>5510 W. Sunset Blvd.</td>
+                <td>54</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="57/">Edward Anthony Travens</a></td>
+                <td>1992-04-29</td>
+                <td>Not riot-related</td>
+                <td>San Fernando Road &amp; San Fernando Mission Boulevard</td>
+                <td>15</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="58/">Eduardo C. Vela</a></td>
+                <td>1992-04-29</td>
+                <td>Homicide</td>
+                <td>5100 block of West Slauson Avenue</td>
+                <td>33</td>
+                <td>Male</td>
+                <td>Latino</td>
+            </tr>
+            
+            <tr>
+                <td><a href="59/">Fredrick Ward</a></td>
+                <td>1992-05-02</td>
+                <td>Homicide</td>
+                <td>11932 Cometa Ave.</td>
+                <td>20</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="60/">Louis A. Watson</a></td>
+                <td>1992-04-29</td>
+                <td>Homicide</td>
+                <td>4365 S. Vermont Ave.</td>
+                <td>18</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="61/">Elbert O. Wilkins</a></td>
+                <td>1992-04-30</td>
+                <td>Homicide</td>
+                <td>Western Avenue &amp; 92nd Street</td>
+                <td>33</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+            <tr>
+                <td><a href="62/">John H. Willers</a></td>
+                <td>1992-04-29</td>
+                <td>Homicide</td>
+                <td>10621 Sepulveda Blvd.</td>
+                <td>37</td>
+                <td>Male</td>
+                <td>White</td>
+            </tr>
+            
+            <tr>
+                <td><a href="63/">Willie Bernard Williams</a></td>
+                <td>1992-04-29</td>
+                <td>Death</td>
+                <td>Gage &amp; Western avenues</td>
+                <td>29</td>
+                <td>Male</td>
+                <td>Black</td>
+            </tr>
+            
+        </table>
+ 
+ <!--
+id,first_name,last_name,full_name,disposition,age,gender,race,date,address,neighborhood,type,x,y,story,url
+-->
+
+        <script type="text/javascript">
+            var map = L.map('map').setView([34.055, -118.35], 9);
+            var mapquestLayer = new L.TileLayer('http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Data, imagery and map information provided by <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>,<a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.',
+                subdomains: ['otile1','otile2','otile3','otile4']
+            });
+            map.addLayer(mapquestLayer);
+
+            var data = {
+              "type": "FeatureCollection",
+              "features": [
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Cesar A. Aguilar",
+                    "id": "1"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2739756, 34.0592814]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "George Alvarez",
+                    "id": "2"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2340982, 34.0626901]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Wilson Alvarez",
+                    "id": "3"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.326816, 33.901662]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Brian E. Andrew",
+                    "id": "4"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2153903, 33.9034569]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Vivian Austin",
+                    "id": "5"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.304741, 33.985667]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Franklin Benavidez",
+                    "id": "6"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3088215, 34.0034731]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Carol Benson",
+                    "id": "7"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2805037, 33.98916756]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Patrick Bettan",
+                    "id": "8"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.293181, 34.052068]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Hector Castro",
+                    "id": "9"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.291654, 34.0587022]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Jerel L. Channell",
+                    "id": "10"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3323783, 34.09129756]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Gregory Davis Jr.",
+                    "id": "11"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2915492, 34.005485]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "John Doe #80",
+                    "id": "12"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2914954, 33.98939885]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Harry Doller",
+                    "id": "13"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.278763, 34.08778849]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Kevin J. Edwards",
+                    "id": "14"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2002522, 33.892421]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Howard Epstein",
+                    "id": "15"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3247424, 33.9890486]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Juana Espinosa",
+                    "id": "16"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2461881, 33.9198205]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Kevin A. Evanahen",
+                    "id": "17"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.4144533, 33.99267241]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Jose L. Garcia",
+                    "id": "18"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2070419, 34.0275527]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Mark Garcia",
+                    "id": "19"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3537656, 33.93895407]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Elias Garcia Rivera",
+                    "id": "20"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.4137912, 34.1939342]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Andreas Garnica",
+                    "id": "21"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2818793, 34.0468443]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Meeker Gibson",
+                    "id": "22"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-117.7306469, 34.0628458]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Matthew D. Haines",
+                    "id": "23"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.1785114, 33.7898575]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Jimmie Harris",
+                    "id": "24"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2651995, 33.989245]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "DeAndre Harrison",
+                    "id": "25"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2542949, 33.9294721]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Paul D. Horace",
+                    "id": "26"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2474139, 34.0217355]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Betty Jackson",
+                    "id": "27"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2739305, 33.9965216]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Dennis Ray Jackson",
+                    "id": "28"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2537567, 33.93229185]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Tranh Lam",
+                    "id": "29"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2238673, 33.8885943]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Edward Song Lee",
+                    "id": "30"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3054392, 34.0689851]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Frank D. Lopez",
+                    "id": "31"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2487649, 34.0264271]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Darnell R. Mallory",
+                    "id": "32"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3341384, 34.09097156]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Lucie R. Maronian",
+                    "id": "33"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.1134357, 34.1785051]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Howard Eugene Martin",
+                    "id": "34"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.141613, 34.1668637]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Ira F. McCurry",
+                    "id": "35"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.265163, 33.9437558]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Alfred V. Miller",
+                    "id": "36"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3157372, 33.9745911]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Arturo C. Miranda",
+                    "id": "37"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2543429, 33.9237304]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Suzanne R. Morgan",
+                    "id": "38"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2344108, 33.9304917]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Nissar Mustafa",
+                    "id": "39"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3090341, 34.0435539]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Ernest Neal Jr.",
+                    "id": "40"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.309006, 33.952709]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Anthony Netherly",
+                    "id": "41"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2695156, 33.9687806]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Charles W. Orebo",
+                    "id": "42"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2812901, 33.9746575]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Juanita Pettaway",
+                    "id": "43"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3331771, 34.090696]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Juan A. Pineda",
+                    "id": "44"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.281326, 34.092221]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Hugo G. Ramirez",
+                    "id": "45"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-117.997106, 34.070238]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Aaron Ratinoff",
+                    "id": "46"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.4431, 34.0286551]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Victor R. Rivas",
+                    "id": "47"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.291583, 34.0472563]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "William Ross",
+                    "id": "48"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.291274, 34.05569]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Juan V. Salgado",
+                    "id": "49"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2713789, 34.02062153]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Imad Sharaf",
+                    "id": "50"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.4717452, 34.27185555]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Jose Solorzano",
+                    "id": "51"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.291755, 34.0908675]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "George A. Sosa",
+                    "id": "52"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.22518059, 33.97418]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Anthony J. Taylor",
+                    "id": "53"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2531966, 33.9314634]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Dwight Taylor",
+                    "id": "54"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.292169, 34.004453]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "James L. Taylor",
+                    "id": "55"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3037557, 34.0982485]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Wallace Tope",
+                    "id": "56"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3098224, 34.0980819]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Edward Anthony Travens",
+                    "id": "57"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.4430027, 34.28418731]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Eduardo C. Vela",
+                    "id": "58"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3687199, 33.9876036]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Fredrick Ward",
+                    "id": "59"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.412778, 34.287098]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Louis A. Watson",
+                    "id": "60"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.2915566, 34.00524354]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Elbert O. Wilkins",
+                    "id": "61"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3100043, 33.95276731]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "John H. Willers",
+                    "id": "62"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.46777, 34.263184]
+                  }
+                },
+                
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "full_name": "Willie Bernard Williams",
+                    "id": "63"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [-118.3089517, 33.9823625]
+                  }
+                }
+                
+              ]
+            };
+            
+            var blackIcon = L.Icon.extend({
+                options: {
+                    iconUrl: "/static/marker-24.png",
+                    iconSize: [24, 24]
+                }
+            });
+
+           var dataLayer = L.geoJson(data, {
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, {icon: new blackIcon()});
+                },
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(
+                        '<a href="'+ feature.properties.id + '/">' + feature.properties.full_name + '</a>'
+                        );
+                }
+            });
+
+             map.addLayer(dataLayer);
+        </script>
+
+</body>
+</html>
