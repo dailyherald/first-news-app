@@ -7,7 +7,7 @@
     First news app - L.A. riots
   </title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="static/style.css" />
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -17,13 +17,13 @@
 <body>
         <nav>
             <a href="http://first-news-app.readthedocs.org/">
-                <img src="{{ url_for('static', filename='irelogo.png') }}">
+            <img src="static/irelogo.png">
             </a>
         </nav>
         <header>
             <h1>These are the 60 people who died during the L.A. riots</h1>
             <div class="byline">
-                By <a href="http://first-news-app.readthedocs.org/">The First News App Tutorial</a>
+                By <a href="http://first-news-app.readthedocs.org/">First News App Tutorial</a>
             </div>
         </header>
 
@@ -87,7 +87,7 @@ id,first_name,last_name,full_name,disposition,age,gender,race,date,address,neigh
           
             var blackIcon = L.Icon.extend({
                 options: {
-                    iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
+                    iconUrl: "static/marker-24.png",
                     iconSize: [24, 24]
                 }
             });
