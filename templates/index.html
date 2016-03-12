@@ -84,13 +84,14 @@ id,first_name,last_name,full_name,disposition,age,gender,race,date,address,neigh
                 {% endfor %}
               ]
             };
-            
+          
             var blackIcon = L.Icon.extend({
                 options: {
                     iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
                     iconSize: [24, 24]
                 }
             });
+// if not loop.last makes sure no comma at last feature
 
            var dataLayer = L.geoJson(data, {
                 pointToLayer: function (feature, latlng) {
