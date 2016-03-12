@@ -71,6 +71,9 @@ When you make a new directory, commit it first before you add anything to it
 
  git checkout <name of branch> - switches between branches of a repo
 
+i - goes into insert mode
 
+press Esc to make sure you are out of the insert mode
+then type :wqEnter or ZZ.
 
 
