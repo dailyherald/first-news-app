@@ -1448,13 +1448,14 @@ id,first_name,last_name,full_name,disposition,age,gender,race,date,address,neigh
                 
               ]
             };
-            
+          
             var blackIcon = L.Icon.extend({
                 options: {
                     iconUrl: "/static/marker-24.png",
                     iconSize: [24, 24]
                 }
             });
+// if not loop.last makes sure no comma at last feature
 
            var dataLayer = L.geoJson(data, {
                 pointToLayer: function (feature, latlng) {
