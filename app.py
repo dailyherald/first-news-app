@@ -1,5 +1,6 @@
 import csv
 from flask import Flask
+from flask import abort
 from flask import render_template # combines data with html to make a webpage
 #---------
 app = Flask(__name__) # variable app = Flask(name of file)
@@ -24,7 +25,7 @@ def index():
     object_list = get_csv('./static/la-riots-deaths.csv')
     return render_template(template, object_list=object_list)
 
-
+# here's the function that slices out the unique info for each person
 @app.route('/<row_id>/')
 def detail(row_id):
     template = 'detail.html'
@@ -32,6 +33,7 @@ def detail(row_id):
     for row in object_list:
         if row['id'] == row_id:
             return render_template(template, object=row)
+    abort(404)
 
 
 # Sets up the server on localhost:5000
