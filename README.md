@@ -69,3 +69,8 @@ stuff/*.* - for instance ignores everything in the directory stuff, even if you 
 When you make a new directory, commit it first before you add anything to it
 
 
+ git checkout <name of branch> - switches between branches of a repo
+
+
+
+
