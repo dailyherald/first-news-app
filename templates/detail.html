@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="stylesheet" href="static/style.css" />
 
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -10,7 +10,7 @@
     <body>
         <nav>
             <a href="http://first-news-app.readthedocs.org/">
-                <img src="{{ url_for('static', filename='irelogo.png') }}">
+                <img src="static/irelogo.png">
             </a>
         </nav>
         <header>
@@ -34,7 +34,7 @@
             map.addLayer(mapquestLayer);
             var blackIcon = L.Icon.extend({
                 options: {
-                    iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
+                    iconUrl: "static/marker-24.png",
                     iconSize: [24, 24]
                 }
             });
